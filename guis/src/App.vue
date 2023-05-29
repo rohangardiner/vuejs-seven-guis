@@ -48,6 +48,7 @@ body {
   justify-content: center;
   gap: 20px;
   height: 100%;
+  min-width: 1800px;
 }
 
 /* Would prefer to use max-width on container, but this works for now */

@@ -1,16 +1,16 @@
 <template>
   <h1>Flight Booker Page</h1>
-  <!-- Dropdown uses flightType variable -->
   <p>
+  <!-- Dropdown uses flightType variable -->
     <select v-model="flightType">
       <option value="one-way flight">One-way flight</option>
       <option value="return flight">Return flight</option>
     </select>
   </p>
 
-  <!-- Date picker, disable return date if one-way flight selected -->
   <p>
-    Depart: <input type="date" v-model="departDate"> 
+  <!-- Date picker, disable return date if one-way flight selected -->
+    Depart: <input type="date" v-model="departDate"> <br>
     Return: <input type="date" v-model="returnDate" :disabled="!isReturnFlight">
   </p>
 
@@ -18,9 +18,7 @@
   <button :disabled="!canBook" @click="book">Book</button>
 
   <!-- Check if valid input, show error text if not -->
-  <p>
     {{ canBook ? '' : 'Return date must be after depart date.' }}
-  </p>
 </template>
 
 <script>
@@ -77,3 +75,4 @@
     }
   }
 </script>
+
