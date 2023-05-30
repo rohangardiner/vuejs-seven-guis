@@ -13,7 +13,7 @@
       <router-link to="/crud">CRUD</router-link><br>
       <router-link to="/circle">Circle Drawer</router-link><br>
       <router-link to="/cells">Cells</router-link><br>
-  </nav>
+    </nav>
   </header>
   <article>
     <!-- router-view renders whatever page we've routed to using router-links -->
