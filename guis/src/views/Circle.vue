@@ -22,6 +22,9 @@
         <image x="0" y="0" height="800" width="800" xlink:href="https://picsum.photos/800/800"></image>
       </pattern>
     </defs>
+    <!-- Each circle in array gets drawn at their location -->
+    <!-- Selected circle gets blue fill, otherwise the image fill defined in pattern -->
+    <!-- Also if we right click a circle, disable rightclick menu -->
     <circle v-for="circle in circles"
       :cx="circle.cx"
       :cy="circle.cy"
@@ -32,17 +35,21 @@
     </circle>
   </svg>
 
+  <!-- Adjusting dialog, close if we click elsewhere on the canvas -->
   <div class="dialog" v-if="adjusting" @click.stop>
+    <!-- Remove decimals from x and y at print -->
     <p>Adjust radius of circle at ({{ selected.cx.toFixed(0) }}, {{ selected.cy.toFixed(0) }})</p>
     <input type="range" v-model="selected.r" min="1" max="400">
   </div>
 </template>
 
 <script>
+// Duplicate array when we use undo/redo, creating a parallel universe
 function clone(circles) {
   return circles.map((c) => ({ ...c }))
 }
 
+// Set up default data variables for this view
 export default {
   data() {
     return {
@@ -55,11 +62,13 @@ export default {
   },
 
   methods: {
-    // Called by clicking on the svg. Creates a circle.
+    // Called by clicking on the svg. Attemptes to create a circle
     createCircle({ clientX: x, clientY: y }) {
       // Adjust x/y based on canvas offset instead of window position
       x = x - document.querySelector("svg").getBoundingClientRect().left
       y = y - document.querySelector("svg").getBoundingClientRect().top
+
+      // Check if we're adjusting an existing circle
       if (this.adjusting) {
         this.adjusting = false
         this.selected = null
@@ -67,12 +76,14 @@ export default {
         return
       }
 
+      // Find the selected circle in circles array for adjusting
       this.selected = [...this.circles].reverse().find(({ cx, cy, r }) => {
         const dx = cx - x
         const dy = cy - y
         return Math.sqrt(dx * dx + dy * dy) <= r
       })
 
+      // Finally, if we can create a new circle, add it to canvas and push to array
       if (!this.selected) {
         this.circles.push({
           cx: x,
@@ -83,20 +94,24 @@ export default {
       }
     },
 
+    // Set current circle and adjusting mode
     adjustCircle(circle) {
       this.selected = circle
       this.adjusting = true
     },
 
+    // Update circles array
     push() {
       this.history.length = ++this.index
       this.history.push(clone(this.circles))
     },
 
+    // Duplicate array, but remove latest addition
     undo() {
       this.circles = clone(this.history[--this.index])
     },
 
+    // Duplicate array, but re-add the previous removed circle
     redo() {
       this.circles = clone(this.history[++this.index])
     }
@@ -105,17 +120,20 @@ export default {
 </script>
 
 <style scoped>
+/* Canvas */
 svg {
   width: 800px;
   height: 800px;
   background-color: #eee;
 }
 
+/* Undo / Redo buttons */
 .controls button + button {
   margin-left: 6px;
   margin-bottom: 6px;
 }
 
+/* Adjusting dialog box */
 .dialog {
   position: fixed;
   top: calc(50% - 50px);
@@ -129,13 +147,13 @@ svg {
   text-align: center;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
-
 .dialog input {
   display: block;
   width: 200px;
   margin: 0px auto;
 }
 
+/* Help text on canvas */
 .tip {
   text-align: center;
   padding: 0 50px;
