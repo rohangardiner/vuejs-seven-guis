@@ -11,6 +11,19 @@
 
     <!-- Button to reset timer -->
     <button @click="reset">Reset Timer</button>
+
+    <div class="criteria">
+    Criteria:
+    <ul>
+      <li class="yes">A frame containing a gauge for an elapsed time.</li>
+      <li class="yes">A label which shows the elapsed time as a numerical value.</li>
+      <li class="yes">A slider by which the duration of the timer can be adjusted while the timer is running.</li>
+      <li class="yes">A reset button.</li>
+      <li class="yes">Adjusting the slider must immediately reflect on the duration & gauge (not only when the slider is released).</li>
+      <li class="kinda">When the elapsed time &ge; duration, the timer stops (and the gauge will be full). If, thereafter, the duration is increased such that the duration &gt; elapsed time, the timer starts to tick until elapsed time &ge; duration again.</li>
+      <li class="yes">Clicking the reset button will reset elapsed time to zero.</li>
+    </ul>
+  </div>
   </template>
 
   <script>

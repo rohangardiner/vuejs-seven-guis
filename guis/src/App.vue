@@ -53,7 +53,7 @@ body {
 
 /* Would prefer to use max-width on container, but this works for now */
 #app > * {
-  width: 25%;
+  width: 900px;
 }
 
 /* Aligning Logo/Navigation flex box */
@@ -63,4 +63,15 @@ header {
   align-items: center;
   gap: 20px;
 }
+
+.criteria {
+  background-color: beige;
+  border-left: 3px solid burlywood;
+  padding: 10px;
+  margin: 20px 0;
+  width: 800px;
+}
+.criteria .yes { list-style-image: linear-gradient(to bottom, green, lime); }
+.criteria .kinda { list-style-image: linear-gradient(to bottom, orange, yellow); }
+.criteria .no { list-style-image: linear-gradient(to bottom, red, brown); }
 </style>

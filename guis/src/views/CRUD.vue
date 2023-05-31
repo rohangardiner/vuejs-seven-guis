@@ -14,6 +14,27 @@
     <button @click="update">Update</button>
     <button @click="del">Delete</button>
   </div>
+
+  <div class="criteria">
+    Criteria:
+    <ul>
+      <li class="yes">Build a frame containing the following elements: Prefix, name & surname textfields with labels; List box; Create, update & delete buttons.</li>
+      <li class="yes">The list box presents a view of the data in the database that consists of a list of names.
+</li>
+      <li class="yes">At most one entry can be selected in the box at a time.
+</li>
+      <li class="yes">By entering a string into the prefix textfield, the user can filter the names whose surname start with the entered prefix (this should happen immediately without having to submit the prefix with enter).
+</li>
+      <li class="yes">Clicking the create button will append the resulting name from concatenating the strings in the name & surname textfields to the list box.
+</li>
+      <li class="yes">The update and delete buttons are enabled if an entry in the list box is selected. In contrast to the create button, the update button will not append the resulting name but instead replace the selected entry with the new name.
+</li>
+      <li class="yes">The delete button will remove the selected entry.
+</li>
+      <li class="yes">The list box must occupy all the remaining space.
+</li>
+    </ul>
+  </div>
 </template>
 
 
@@ -71,10 +92,6 @@ export default {
 </script>
 
 <style scoped>
-* {
-  font-size: inherit;
-}
-
 input {
   display: block;
   margin-bottom: 10px;

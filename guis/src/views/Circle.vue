@@ -41,6 +41,27 @@
     <p>Adjust radius of circle at ({{ selected.cx.toFixed(0) }}, {{ selected.cy.toFixed(0) }})</p>
     <input type="range" v-model="selected.r" min="1" max="400">
   </div>
+
+  <div class="criteria">
+    Criteria:
+    <ul>
+      <li class="yes">Build a frame containing an undo and redo button as well as a canvas area underneath.</li>
+      <li class="kinda">Left-clicking inside an empty area inside the canvas will create an unfilled circle with a fixed diameter whose center is the left-clicked point.</li>
+      <li class="kinda">The circle nearest to the mouse pointer such that the distance from its center to the pointer is less than its radius, if it exists, is filled with the color gray.</li>
+      <li class="yes">The gray circle is the selected circle.
+</li>
+      <li class="no">Right-clicking a selected circle will make a popup menu appear with one entry “Adjust diameter..”.
+</li>
+      <li class="yes">Clicking on this entry will open another frame with a slider inside that adjusts the diameter of selected circle (changes are applied immediately).
+</li>
+      <li class="yes">Closing this frame will mark the last diameter as significant for the undo/redo history.
+</li>
+      <li class="yes">Clicking undo will undo the last significant change (i.e. circle creation or diameter adjustment).
+</li>
+      <li class="yes">Clicking redo will reapply the last undoed change unless new changes were made by the user in the meantime.
+</li>
+    </ul>
+  </div>
 </template>
 
 <script>

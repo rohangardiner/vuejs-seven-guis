@@ -19,6 +19,18 @@
   <p>
     Thanks <a href="https://www.quora.com/Why-do-we-use-9-5-in-degree-Fahrenheit" target="_blank">Toby on Quora!</a>
   </p>
+
+  <div class="criteria">
+    Criteria:
+    <ul>
+      <li class="yes">The task is to build a frame containing 2 textfields representing the temperature in Celsius and Fahrenheit.</li>
+      <li class="yes">Initially, both textfields are empty.</li>
+      <li class="yes">When the user enters a numerical value into a textfield, the corresponding value in the other is automatically updated.</li>
+      <li class="yes">When the user enters a non-numerical string into a textfield, the value in the other is not updated.</li>
+      <li class="yes">Formula for converting a temperature from Celsius to Fahrenheit: F = C * (9/5) + 32.</li>
+      <li class="yes">Formula for converting a temperature from Fahrenheit to Celsius: C = (F - 32) * (5/9).</li>
+    </ul>
+  </div>
 </template>
 
 <script>

@@ -23,6 +23,18 @@
       </tr>
     </tbody>
   </table>
+
+  <div class="criteria">
+    Criteria:
+    <ul>
+      <li class="yes">Create a simple but usable spreadsheet application.</li>
+      <li class="no">The spreadsheet should be scrollable.</li>
+      <li class="kinda">The rows should be numbered from 0 to 99 and the columns from A to Z.</li>
+      <li class="kinda">Double-clicking a cell C lets the user change C&apos;s formula.</li>
+      <li class="yes">After having finished editing the formula is parsed and evaluated and its updated value is shown in C. In addition, all cells which depend on C must be re-evaluated. This process repeats until there are no more changes in the values of any cell (change propagation).</li>
+      <li class="yes">One should not just recompute the value of every cell but only of those cells that depend on another cell&apos;s changed value.</li>
+    </ul>
+  </div>
 </template>
 
 
