@@ -1,16 +1,17 @@
 <template>
+    <!-- Each cell is an input if editing, else a span with value -->
     <div class="cell" :title="cells[c][r]" @click="editing = true">
       <input v-if="editing"
         :value="cells[c][r]"
-        @change="update"
-        @blur="update"
+        @change="updateCell"
+        @blur="updateCell"
         @vue:mounted="({ el }) => el.focus()">
-      <span v-else>{{ evalCell(cells[c][r]) }}</span>
+      <span v-else>{{ calcCellValue(cells[c][r]) }}</span>
     </div>
   </template>
 
 <script>
-    import { cells, evalCell } from './CellsStore.js'
+    import { cells, calcCellValue } from './CellsStore.js'
 
     export default {
         props: {
@@ -26,8 +27,8 @@
         },
 
         methods: {
-            evalCell,
-            update(e) {
+            calcCellValue,
+            updateCell(e) {
                 this.editing = false
                 cells[this.c][this.r] = e.target.value.trim()
             }
